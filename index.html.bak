@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AY Wallpapers</title>
+
+<link rel="icon" type="image/png" href="ayaniwallpaper.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background: #fff;color:#fff;overflow-x:hidden;scroll-behavior:smooth;transition:background 0.5s;}
+a{text-decoration:none;color:inherit;}
+strong,h1,h2,h3,p,button{font-weight:bold;}
+#login-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;justify-content:center;align-items:center;z-index:10000;animation:fadeIn 1s;}
+#login-box{background:#111;padding:50px;border-radius:25px;text-align:center;width:380px;box-shadow:0 0 50px rgba(255,255,255,0.1);border:2px solid #bd7527;animation:zoomIn 0.7s;}
+#login-box h2{margin-bottom:25px;color:#bd7527;font-size:2rem;text-shadow:0 0 15px #bd7527;}
+#login-box input{width:100%;padding:15px;margin:15px 0;border-radius:12px;border:none;background:#222;color:#fff;font-weight:bold;transition:.3s;}
+#login-box input:focus{outline:none;box-shadow:0 0 10px #bd7527;}
+#login-box button{padding:15px 35px;margin-top:15px;border:none;border-radius:12px;background:linear-gradient(90deg,#bd7527,#ffcc33);color:#000;font-weight:bold;font-size:1rem;cursor:pointer;transition:.3s;box-shadow:0 0 20px #bd7527;}
+#login-box button:hover{transform:scale(1.05);box-shadow:0 0 30px #ffcc33;}
+#login-box p{margin-top:15px;color:#aaa;font-size:0.95rem;}
+#main-content{display:none; background:#ffffff; color:#000;}
+.banner{width:100%;position:fixed;top:0;left:0;background: #000;display:flex;align-items:center;padding:15px 40px;gap:25px;z-index:2000;border-bottom:1px solid #ccc;box-shadow:0 3px 15px rgba(0,0,0,0.1);}
+.banner img{height:80px;width:80px;border-radius:50%;border:3px solid #bd7527;object-fit:cover;}
+.site-title{font-size:2rem;color: #fff;margin-right:40px;letter-spacing:1px;text-shadow:0 0 5px #bd7527;}
+.top-menu{list-style:none;display:flex;gap:30px;}
+.top-menu li a{color:#fff;font-size:1.1rem;font-weight:bold;text-decoration:none;transition:.3s;}
+.top-menu li a:hover{color:#bd7527;transform:scale(1.05);}
+.hero{margin-top:180px;text-align:center;padding:80px 20px;background:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:25px;}
+.hero video{width:90%;max-width:900px;border-radius:25px;box-shadow:0 0 25px rgba(189,117,39,0.6);border:2px solid #bd7527;}
+.hero p{font-size:1.3rem;color:#555;}
+.hero .btn{padding:15px 40px;background:#bd7527;color:#fff;border:none;border-radius:15px;font-size:1.1rem;cursor:pointer;transition:.3s;box-shadow:0 0 20px #bd7527;}
+.hero .btn:hover{transform:scale(1.05);box-shadow:0 0 30px #ffcc33;}
+.features{padding:120px 20px;text-align:center;background:#fff;}
+.features h2{font-size:2.7rem;margin-bottom:50px;color:#bd7527;text-shadow:0 0 10px #ffcc33;}
+.features-top{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:40px;}
+.features-top input[type=text]{padding:12px 20px;border-radius:12px;border:none;background:#fff;color:#000;font-size:1rem;box-shadow:0 0 15px #bd7527;width:250px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;max-width:1200px;margin:0 auto;}
+.card{background:#f5f5f5;padding:35px;border-radius:25px;transition:.3s;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.05);}
+.card:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 0 25px #bd7527;}
+.card h3{color:#000;margin-bottom:15px;font-size:1.6rem;}
+.card p{font-size:1.05rem;color:#555;line-height:1.6;}
+.gallery{padding:120px 20px;text-align:center;background:#fff;}
+.gallery h2{font-size:2.7rem;margin-bottom:50px;color:#bd7527;text-shadow:0 0 10px #ffcc33;}
+.gallery-slider{position:relative;max-width:90%;margin:0 auto;overflow:hidden;border-radius:20px;box-shadow:0 0 25px rgba(0,0,0,0.05);}
+.gallery-slider img{width:100%;height:500px;object-fit:cover;position:absolute;top:0;left:0;opacity:0;transition:opacity 1s ease-in-out,border 0.5s;border-radius:20px;cursor:pointer;}
+.gallery-slider img.active{opacity:1;position:relative;border:4px solid #bd7527;}
+.gallery-thumbnails{display:flex;justify-content:center;gap:15px;margin-top:25px;flex-wrap:wrap;}
+.thumbnail-item{text-align:center;transition:.3s;}
+.gallery-thumbnails img{width:120px;height:80px;object-fit:cover;border-radius:12px;cursor:pointer;box-shadow:0 0 10px #bd7527;transition:.3s;}
+.gallery-thumbnails img:hover{transform:scale(1.15) rotate(-2deg);box-shadow:0 0 20px #ffcc33;}
+.thumbnail-item span{display:block;margin-top:5px;font-size:0.9rem;font-weight:bold;color:#000;}
+.contact{padding:120px 20px;text-align:center;background:#fff;}
+.contact h2{font-size:2.7rem;margin-bottom:40px;color:#bd7527;text-shadow:0 0 10px #ffcc33;}
+.contact form{max-width:650px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
+.contact input,.contact textarea{padding:15px;border:none;border-radius:12px;background:#fff;color:#000;font-size:1.1rem;font-weight:bold;box-shadow:0 0 15px #bd7527;resize:none;}
+.contact button{padding:15px 35px;border:none;border-radius:12px;background:#bd7527;color:#fff;font-weight:bold;font-size:1rem;cursor:pointer;transition:.3s;box-shadow:0 0 20px #bd7527;}
+.contact button:hover{transform:scale(1.05);box-shadow:0 0 30px #ffcc33;}
+footer{padding:50px;text-align:center;background:#fff;border-top:1px solid #ccc;color:#000;font-size:1rem;font-weight:bold;box-shadow:0 0 10px #bd7527;}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div id="login-overlay">
+  <img src="ayaniiwallpaper_.png" width="400" height="400">
+  <div id="login-box">
+    <h2>Sign In to AY Wallpapers</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+    <p>Demo login: any username/password works</p>
+  </div>
+</div>
+
+<div id="main-content">
+
+<div class="banner">
+  <img src="ayanwallpaper.png" alt="AY Wallpapers Logo">
+  <h1 class="site-title">AY Wallpaper</h1>
+  <ul class="top-menu">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#features">Categories</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="subscribe.html">Subscribe</a></li>
+  </ul>
+</div>
+
+<section class="hero" id="hero">
+  <!-- Ad Video -->
+  <video autoplay muted loop playsinline>
+    <source src="b5a86e04-71d1-4677-82b8-5d2c45665174.mp4" type="video/mp4">
+   
+  </video>
+  <p>Simple, smooth, and ultra-beautiful wallpapers for every device.</p>
+  <button class="btn" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Explore Now</button>
+</section>
+
+<section class="features" id="features">
+  <h2>Categories</h2>
+  <div class="features-top">
+    <div class="cards">
+      <div class="card" onclick="filterGallery('fast')"><h3>Super Fast</h3><p>Optimized & blazing fast wallpapers.</p></div>
+      <div class="card" onclick="filterGallery('design')"><h3>Futuristic Design</h3><p>Clean, minimal, and modern.</p></div>
+      <div class="card" onclick="filterGallery('responsive')"><h3>Fully Responsive</h3><p>Looks stunning on any device.</p></div>
+      <div class="card" onclick="filterGallery('viby')"><h3>Viby & Soft</h3><p>Chill & aesthetic visuals.</p></div>
+    </div>
+    <input type="text" id="gallery-search" placeholder="Search wallpapers..." oninput="searchGallery()">
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-slider" id="gallery-slider"></div>
+  <div class="gallery-thumbnails" id="gallery-thumbnails"></div>
+</section>
+
+<footer>
+  <p>© 2025 AY Wallpapers | Crafted with 💙</p>
+</footer>
+
+</div>
+
+<script>
+function login(){
+  const u=document.getElementById('username').value;
+  const p=document.getElementById('password').value;
+  if(u&&p){document.getElementById('login-overlay').style.display='none';document.getElementById('main-content').style.display='block';}
+}
+
+const gallerySlider=document.getElementById('gallery-slider');
+const galleryThumbnails=document.getElementById('gallery-thumbnails');
+
+const wallpaperNames = ["Golden Sunset","Neon City","Forest Mist","Ocean Waves","Mountain Peak","Starry Night","Autumn Leaves","Soft Pastel","Retro Vibes","Cosmic Dreams","Desert Dunes","Rainy Day","Morning Dew","Cherry Blossom","Aurora Sky","Vintage Car","Abstract Shapes","Beach Paradise","Coffee Mood","Galaxy Horizon","Winter Wonderland","Floral Delight","Urban Jungle","Sunny Field","Dark Alley","Rainbow Sky","Calm River","Minimal Lines","City Lights","Lavender Dreams","Waterfall View","Foggy Morning","Ice Crystals","Golden Gate","Sunrise Glow","Night Lights","Autumn Path","Ocean Cliff","Street Art","Cloudy Sky","Silhouette Trees","Digital Waves","Peaceful Lake","Hot Air Balloons","Morning Fog","Neon Lights","Rocky Mountains","Green Meadow","Stormy Sky","Sunset Glow","Desert Mirage","Moonlit Night","Vintage Poster","City Skyline","Blue Horizon","Magic Forest","Retro Sunset","Dreamy Clouds","Sparkling Night","Silent Lake"];
+
+const galleryItems=[];
+for(let i=0;i<60;i++){
+  galleryItems.push({
+    id:i+1,
+    category:['fast','design','responsive','viby'][i%4],
+    src:`https://picsum.photos/id/${1000+i}/1200/800`,
+    name:wallpaperNames[i]
+  });
+}
+
+let currentSlide=0;
+
+function displayGallery(items){
+  gallerySlider.innerHTML='';
+  galleryThumbnails.innerHTML='';
+  items.forEach((item,index)=>{
+    const slide=document.createElement('img');
+    slide.src=item.src;
+    if(index===0) slide.classList.add('active');
+    gallerySlider.appendChild(slide);
+
+    const thumbWrapper=document.createElement('div');
+    thumbWrapper.className='thumbnail-item';
+    const thumb=document.createElement('img');
+    thumb.src=item.src;
+    const caption=document.createElement('span');
+    caption.textContent=item.name;
+    thumbWrapper.appendChild(thumb);
+    thumbWrapper.appendChild(caption);
+    galleryThumbnails.appendChild(thumbWrapper);
+
+    thumb.addEventListener('click',()=>{showSlide(index);});
+  });
+}
+
+function showSlide(index){
+  const slides=gallerySlider.querySelectorAll('img');
+  slides.forEach((s,i)=>s.classList.toggle('active',i===index));
+  currentSlide=index;
+}
+
+// ===== CATEGORY FILTER =====
+function filterGallery(cat){
+  const filtered = galleryItems.filter(item => item.category === cat);
+  displayGallery(filtered);
+  document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
+}
+
+displayGallery(galleryItems);
+</script>
+
+</body>
+</html>

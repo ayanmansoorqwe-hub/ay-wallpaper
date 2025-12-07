@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscribe - AY Wallpapers</title>
+
+<link rel="icon" type="image/png" href="ayaniwallpaper.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#fff;color:#000;}
+.banner{width:100%;position:fixed;top:0;left:0;background:#fff;display:flex;align-items:center;padding:15px 40px;gap:25px;z-index:2000;border-bottom:1px solid #ccc;box-shadow:0 3px 15px rgba(0,0,0,0.1);}
+.banner img{height:70px;width:70px;border-radius:50%;border:3px solid #bd7527;}
+.site-title{font-size:2rem;margin-right:40px;}
+.top-menu{list-style:none;display:flex;gap:25px;}
+.top-menu li a{color:#000;font-size:1.1rem;font-weight:bold;}
+.top-menu li a:hover{color:#bd7527;}
+.sub-box{margin-top:160px;max-width:600px;margin-left:auto;margin-right:auto;padding:20px;text-align:center;}
+.sub-box h1{font-size:2.4rem;margin-bottom:20px;color:#bd7527;}
+.plan{padding:25px;border-radius:15px;background:#f8f8f8;margin:15px 0;border:1px solid #ddd;}
+.plan h2{color:#000;margin-bottom:10px;}
+.plan button{padding:12px 25px;border:none;border-radius:12px;background:#bd7527;color:#fff;font-weight:bold;cursor:pointer;}
+.plan button:hover{background:#ffcc33;color:#000;}
+.back-btn{display:inline-block;margin-top:25px;color:#000;font-weight:bold;}
+</style>
+</head>
+
+<body>
+
+<div class="banner">
+  <img src="ayanwallpaper.png">
+  <h1 class="site-title">AY Wallpaper</h1>
+
+  <ul class="top-menu">
+    <li><a href="index.html#hero">Home</a></li>
+    <li><a href="index.html#features">Categories</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+</div>
+
+<div class="sub-box">
+  <h1>Choose Your Plan</h1>
+
+  <!-- BASIC PLAN -->
+  <div class="plan">
+    <h2>Basic Plan</h2>
+    <p style="font-size:1.2rem;color:#555;margin-bottom:10px;">Perfect for normal users</p>
+
+    <ul style="text-align:left;margin:20px auto;max-width:300px;line-height:1.8;">
+      <li>✔ Unlimited HD Wallpapers</li>
+      <li>✔ Normal Download Speed</li>
+      <li>✔ Weekly New Wallpapers</li>
+      <li>✔ Basic Support</li>
+    </ul>
+
+    <h2 style="color:#bd7527;margin:15px 0;">Price: <strong>FREE</strong></h2>
+    <button>Continue Free</button>
+  </div>
+
+  <!-- PREMIUM PLAN -->
+  <div class="plan" style="background:#fff4d6;border-color:#ffc44c;">
+    <h2>Premium Plan ⭐</h2>
+    <p style="font-size:1.2rem;color:#555;margin-bottom:10px;">For users who want the best</p>
+
+    <ul style="text-align:left;margin:20px auto;max-width:300px;line-height:1.8;">
+      <li>✔ 4K & Ultra HD Wallpapers</li>
+      <li>✔ Super Fast Download Speed</li>
+      <li>✔ Daily New Wallpapers</li>
+      <li>✔ Premium Exclusive Categories</li>
+      <li>✔ No Ads</li>
+      <li>✔ Priority Support</li>
+    </ul>
+
+    <h2 style="color:#bd7527;margin:15px 0;">
+      Price: <strong>Rs 499 / month</strong>
+    </h2>
+    <button>Get Premium</button>
+  </div>
+
+  <br>
+  <a class="back-btn" href="index.html">⬅ Back to Home</a>
+</div>
